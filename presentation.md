@@ -2,23 +2,21 @@ title: My Presentation
 class: animation-fade
 layout: true
 
-<!-- This slide will serve as the base layout for all your slides -->
-.bottom-bar[
-  {{title}}
-]
-
 ---
 
-class: impact
+class: inverse
 
 # {{title}}
-## With a good subtitle :-)
+
+Markus Benning
+
+.created-on[2016-08-26]
 
 ---
-
-# The basics
-
-## Getting started
+.head[
+  # The basics
+  ## Getting started
+]
 
 Use [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) to write your slides. Don't be afraid, it's really easy!
 
@@ -39,9 +37,10 @@ Look how you can make *some* points:
 
 ---
 
-# There's more
-
-## Syntax highlighting
+.head[
+  # There's more
+  ## Syntax highlighting
+]
 
 You can also add `code` to your slides:
 ```html
@@ -55,10 +54,10 @@ You can use .alt[shortcut] syntax to apply .big[some style!]
 ...or just <span class="alt">HTML</span> if you prefer.
 
 ---
-
-# And more...
-
-## 12-column grid layout
+.head[
+  # And more...
+  ## 12-column grid layout
+]
 
 Use to the included **grid layout** classes to split content easily:
 .col-6[
@@ -77,3 +76,13 @@ Use to the included **grid layout** classes to split content easily:
 ## Learn the tricks
 
 See the [wiki](https://github.com/gnab/remark/wiki) to learn more of what you can do with .alt[Remark.js]
+
+---
+class: inverse
+
+# Thanks
+
+For more information please contact:
+
+Markus Benning &lt;<a href="mailto:ich@markusbenning.de">ich@markusbenning.de</a>&gt;
+
