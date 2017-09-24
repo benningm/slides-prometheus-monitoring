@@ -6,6 +6,10 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+a:link { color: #333 }
+a:visited { color: #333 }
+a:hover { color: #555 }
+
 .remark-code, .remark-inline-code {
   font-family: 'Inconsolata';
 }
@@ -22,8 +26,19 @@ body {
 .inverse {
   background-color: #333;
   color: #fff;
-  vertical-align: middle;
+  vertical-align: bottom;
   text-align: left;
+  text-shadow: 1px 1px black;
+}
+
+.background-title {
+  background: url(backgrounds/title.jpg) no-repeat center center fixed; 
+  background-size: cover;
+}
+
+.background-back {
+  background: url(backgrounds/back.jpg) no-repeat center center fixed; 
+  background-size: cover;
 }
 
 .head {
