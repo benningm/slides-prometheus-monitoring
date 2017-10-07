@@ -26,19 +26,23 @@ a:hover { color: #555 }
 .inverse {
   background-color: #333;
   color: #fff;
-  vertical-align: bottom;
-  text-align: left;
+  vertical-align: middle;
+  text-align: center;
   text-shadow: 1px 1px black;
 }
 
 .background-title {
   background: url(backgrounds/title.jpg) no-repeat center center fixed; 
   background-size: cover;
+  vertical-align: bottom;
+  text-align: left;
 }
 
 .background-back {
   background: url(backgrounds/back.jpg) no-repeat center center fixed; 
   background-size: cover;
+  vertical-align: bottom;
+  text-align: left;
 }
 
 .head {
@@ -100,28 +104,6 @@ pre.console {
   }
 }
 
-// Positioning
-.side-layer {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  padding: 0 2em;
-}
-.middle { &, & img, & span { vertical-align: middle; } };
-.top { vertical-align: top; };
-.bottom { vertical-align: bottom; };
-.inline-block {
-  p, ul, ol, blockquote {
-    display: inline-block;
-    text-align: left;
-  }
-}
-.no-margin { &, & > p, & > pre, & > ul, & > ol { margin: 0; } }
-.no-padding { padding: 0; }
-.space-left { padding-left: 1em; }
-.space-right { padding-right: 1em; }
-
-// Positioning
 .side-layer {
   position: absolute;
   left: 0;
