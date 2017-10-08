@@ -28,3 +28,47 @@ services:
     ports:
       - "8080:8080"
 
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+      - ./prometheus/data:/data
+    command:
+      - '-config.file=/etc/prometheus/prometheus.yml'
+      - '-storage.local.path=/data'
+      - '-alertmanager.url=http://alertmanager:9093'
+    ports:
+      - "9090:9090"
+    links:
+      - cadvisor
+      - node-exporter
+      - alertmanager
+
+  alertmanager:
+    image: prom/alertmanager
+    ports:
+      - 9093:9093
+    volumes:
+      - ./alertmanager/config.yml:/etc/alertmanager/config.yml
+      - ./alertmanager/data:/data
+    command:
+      - '-config.file=/etc/alertmanager/config.yml'
+      - '-storage.path=/data'
+    links:
+      - mailhog
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./grafana/data:/var/lib/grafana"
+    links:
+      - prometheus
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - 1025:1025
+      - 8025:8025
+

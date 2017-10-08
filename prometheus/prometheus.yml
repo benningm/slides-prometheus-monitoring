@@ -1,0 +1,17 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+
+  external_labels:
+    monitor: 'devops-franken'
+
+rule_files:
+  - "alert.rules"
+
+scrape_configs:
+  - job_name: 'sandbox'
+    static_configs:
+    - targets: ['localhost:9090','cadvisor:8080','node-exporter:9100']
+      labels:
+        environment: development
+

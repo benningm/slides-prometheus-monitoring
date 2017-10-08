@@ -1,0 +1,14 @@
+global:
+  smtp_smarthost: 'mailhog:1025'
+  smtp_from: 'alertmanager@devops-franken.de'
+  smtp_require_tls: false
+
+route:
+  receiver: 'mailhog'
+
+receivers:
+  - name: 'mailhog'
+    email_configs:
+      - to: markus@devops-franken.de
+        send_resolved: true
+

@@ -1,1 +1,4 @@
+prometheus/data/
+alertmanager/data/
+grafana/data/
 .tmp
