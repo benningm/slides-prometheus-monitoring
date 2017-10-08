@@ -241,7 +241,7 @@ There are adapters to relay data to some long term storage.
 PromQL is prometheus own query language.
 
 * Not SQL-style
-* Designed to series computations
+* Designed for series computations
 
 Series are selected by their name and filtered by labels:
 ```
@@ -279,6 +279,67 @@ All production root filesystems with less than 5 GB available:
 ```
 node_filesystem_bytes_avail{mointpoint="/", environment="production"} / 1e9 < 5
 ```
+
+For more details:
+
+https://prometheus.io/docs/querying/operators/
+---
+.head[
+  # Querying
+  ## PromQL - Aggregations and functions
+]
+Aggregations like `sum`, `min`, `max`, `avg`:
+
+```
+# total number of requests
+sum(http_requests_total)
+```
+
+Functions like `rate`:
+
+```
+rate(http_requests_total{job="api-server"}[5m])
+```
+
+https://prometheus.io/docs/querying/operators/#aggregation-operators
+https://prometheus.io/docs/querying/functions/
+---
+class: inverse
+.head[
+  # Dashboards
+  ## Prometheus ♥ Grafana
+]
+---
+.head[
+  # Grafana
+]
+
+Live demo...
+---
+class: inverse
+.head[
+  # Alerting
+]
+---
+Todo
+---
+class: inverse
+.head[
+  # Roundup
+]
+---
+.head[
+  # Prometheus
+  ## Roundup
+]
+
+**Prometheus is a monitoring system prepared for dynamic environments.**
+
+* based on metrics
+* dimensional data model
+* query language
+* build-in service discovery
+* simple and efficient components
 ---
 class: inverse, background-back
 

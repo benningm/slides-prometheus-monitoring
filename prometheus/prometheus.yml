@@ -2,6 +2,7 @@ global:
   scrape_interval: 5s
   evaluation_interval: 5s
 
+  # added when sending things to external systems (alerts)
   external_labels:
     monitor: 'devops-franken'
 
@@ -14,4 +15,7 @@ scrape_configs:
     - targets: ['localhost:9090','cadvisor:8080','node-exporter:9100']
       labels:
         environment: development
+
+# more options:
+# https://prometheus.io/docs/operating/configuration/
 
