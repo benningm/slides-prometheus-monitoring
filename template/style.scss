@@ -31,6 +31,14 @@ a:hover { color: #555 }
   text-shadow: 1px 1px black;
 }
 
+.dark-box {
+  background-color: rgba(0,0,0,0.7);
+  padding-left: 40px;
+  padding-right: 80px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
 .background-title {
   background: url(backgrounds/title.jpg) no-repeat center center fixed; 
   background-size: cover;

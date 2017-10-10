@@ -6,13 +6,14 @@ layout: true
 ---
 class: inverse, background-title
 
+.dark-box[
 # {{title}}
 {{subtitle}}
 
 Markus Benning
 
 .created-on[2016-08-26]
-
+]
 ---
 class: inverse
 
@@ -321,7 +322,115 @@ class: inverse
   # Alerting
 ]
 ---
-Todo
+.head[
+  # Alerting
+  ## Grafana "AdHoc" Alerting
+]
+
+* Simple notifications built-in
+* Configurable by UI
+* Good for "I want to keep an eye on..." situations
+
+Live Demo...
+---
+background-image: url(alerting.svg)
+background-size: 800px
+.head[
+  # Alerting
+  ## Prometheus Alertmanager
+]
+---
+.head[
+  # Alerting
+  ## Configure alerts in prometheus
+]
+Enable sending of alerts on prometheus commandline:
+```
+--alertmanager.url=http://alertmanager:9093
+```
+Configure a prometheus to load alerts:
+```yaml
+rule_files:
+ - "alert.rules"
+```
+Define Rules:
+```
+ALERT <alert name>
+  IF <expression>
+  [ FOR <duration> ]
+  [ LABELS <label set> ]
+  [ ANNOTATIONS <label set> ]
+```
+Example:
+```
+ALERT InstanceDown
+  IF up == 0
+  FOR 5m
+  LABELS { severity = "page" }
+  ANNOTATIONS {
+    summary = "Instance {{ $labels.instance }} down",
+    description = "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.",
+  }
+```
+---
+.head[
+  # Alerting
+  ## Minimum routing configuration
+]
+Add receivers to `alertmanager.yml`:
+```yaml
+receivers:
+  - name: 'mailhog'
+    email_configs:
+      - to: markus@devops-franken.de
+        send_resolved: true
+```
+We need at least one route:
+```yaml
+route:
+  receiver: 'mailhog'
+```
+---
+.head[
+  # Alerting
+  ## More routing
+]
+Apply filters based on the labels:
+```yaml
+route:
+  receiver: mailhog
+  match:
+    severity: page
+  match_re:
+    service: database|frontend
+```
+Cascade routing definitions:
+```yaml
+route:
+  # global receiver...
+  routes:
+    - match:
+        service: database
+      routes:
+        - receiver: db-admin-chat
+          continue: true
+        - receiver: db-admin-mobile
+          match:
+            severity: page
+```
+---
+.head[
+  # Alerting
+  ## Grouping
+]
+Use grouping parameters in a routing block:
+```yaml
+group_by: [ service ]
+# group_wait: 30s
+# group_interval: 5m
+```
+* Alertmanager will delay alerts by 30s and group them to one alert.
+* If an alert was sent it will wait at least 5m before sending a new alert.
 ---
 class: inverse
 .head[
@@ -343,9 +452,11 @@ class: inverse
 ---
 class: inverse, background-back
 
+.dark-box[
 # Thanks
 
 For more information please contact:
 
 Markus Benning &lt;<a href="mailto:ich@markusbenning.de">ich@markusbenning.de</a>&gt;
+]
 
