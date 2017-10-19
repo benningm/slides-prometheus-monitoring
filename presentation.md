@@ -226,7 +226,7 @@ Labels get merged and the value is stored:
 node_filesystem_files{job="nodes",instance="1.2.3.4",device="/dev/sdb3",fstype="ext4",mountpoint="/rootfs"} 2.9884416e+07
 ```
 
-Values are storage as **float64**.
+Values are stored as **float64**.
 
 Simple storage backend:
 * local storage
